@@ -1,0 +1,17 @@
+{
+  "dev": {
+    "BCClientId": "3068eb59-7832-3486-992f-46f1e2e2ef93",
+    "RedirectURI":"https://my-local-machine.mybraincube.com:9090/",
+    "Domain" : "test.mybraincube.com"
+  },
+  "staging": {
+    "BCClientId": "8ac07f16-ff4d-3d55-80b3-e9ca35a6f8d1",
+    "RedirectURI":"https://test.mybraincube.com/connectors/tableau/",
+    "Domain" : "test.mybraincube.com"
+  },
+  "prod": {
+    "BCClientId": "2dfef7f0-bfc0-3e8e-90a7-8a3cdc1098e3",
+    "RedirectURI":"https://mybraincube.com/connectors/tableau/",
+    "SsoServer" : "mybraincube.com"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": "TableauConnector",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@braincube/brain-font": "1.9.0",
+    "@braincube/brain-js": "1.5.0",
+    "@braincube/brain-ws-js": "4.13.0",
+    "@braincube/react-components": "1.31.1",
+    "babel-polyfill": "6.26.0",
+    "cancel": "^0.2.1",
+    "js-cookie": "2.2.0",
+    "jso": "4.0.2",
+    "moment": "^2.22.1",
+    "npm": "^5.8.0",
+    "prop-types": "15.6.0",
+    "react": "^16.4.0",
+    "react-datepicker": "^1.4.1",
+    "react-dom": "^16.4.0",
+    "react-virtualized": "9.14.1",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "devDependencies": {
+    "@braincube/eslint-config": "1.4.0",
+    "@braincube/react-doc-md": "1.0.0-alpha",
+    "@braincube/ui-tests-js": "1.1.0",
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-plugin-syntax-async-functions": "6.13.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-regenerator": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "css-loader": "0.28.7",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "file-loader": "1.1.6",
+    "html-webpack-plugin": "2.30.1",
+    "jest": "20.0.4",
+    "local-web-server": "2.5.2",
+    "preload-webpack-plugin": "2.1.1",
+    "react-addons-test-utils": "^15.6.2",
+    "rimraf": "2.6.2",
+    "style-loader": "0.18.1",
+    "webpack": "3.10.0",
+    "webpack-bundle-analyzer": "2.9.1",
+    "webpack-dev-server": "2.9.7"
+  },
+  "scripts": {
+    "build": "npm run clean && webpack --config webpack/webpack.config.prod.js",
+    "build:staging": "npm run clean && webpack --config webpack/webpack.config.staging.js",
+    "build:analyze": "npm run build --analyze",
+    "clean": "rimraf build",
+    "doc": "react-doc-md -i src/components",
+    "lint": "node_modules/eslint/bin/eslint.js src --ext .jsx,.js",
+    "reset": "rimraf node_modules && yarn cache clean && yarn install",
+    "start": "webpack-dev-server --config webpack/webpack.config.dev.js",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:watch": "jest --watch",
+    "testsUI": "bash node_modules/@braincube/ui-tests-js/scripts/runUITests.sh",
+    "testsUI:serve": "webpack-dev-server --config webpack/webpack.config.testui.js"
+  },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/*.test.js?(x)"
+    ],
+    "setupFiles": [
+      "<rootDir>/__tests__/mocks/sessionStorageMock.js",
+      "<rootDir>/__tests__/mocks/tableauMock.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__tests__/mocks/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__tests__/mocks/styleMock.js"
+    },
+    "globals": {
+      "WEB_PATH_CONF": {
+        "BCClientId": "3068eb59-7832-3486-992f-46f1e2e2ef93",
+        "RedirectURI": "https://my-local-machine.mybraincube.com:9090/",
+        "Domain": "test.mybraincube.com"
+      }
+    }
+  }
+}
